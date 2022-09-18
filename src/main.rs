@@ -9,6 +9,7 @@ use rand::Rng;
 const TERMINAL_WIDTH: u8 = 80;
 const TERMINAL_HEIGHT: u8 = 50;
 
+/// A position of (x, y) on the terminal
 #[derive(Debug, PartialEq, Clone, Copy)]
 struct Position {
     x: u8,
@@ -16,20 +17,27 @@ struct Position {
 }
 
 impl Position {
+    /// Creates a random position
     fn random() -> Self {
         let mut rng = rand::thread_rng();
         Self {
             x: rng.gen_range(0..TERMINAL_WIDTH),
             y: rng.gen_range(0..TERMINAL_HEIGHT),
         }
-    }    
+    }
 }
+
+/// Part of a snake.
+///
+/// Snake consists of multiple parts each of which has a position
+/// on the screen and a direction to move.
 #[derive(Debug)]
 struct Part {
     pos: Position,
     direction: Option<VirtualKeyCode>,
 }
 
+/// State of the game
 #[derive(Debug)]
 struct State {
     pos: Vec<Part>,
@@ -90,6 +98,7 @@ impl GameState for State {
 }
 
 impl State {
+    /// Handles and reacts to the key strokes by the player.
     fn handle_keys(&mut self, ctx: &mut BTerm) {
         let part_count = self.pos.len();
         let direction = &mut self.pos.first_mut().unwrap().direction;
@@ -124,9 +133,8 @@ impl State {
             _ => {}
         }
     }
-}
 
-impl State {
+    /// Draws the snake on the screen
     fn draw_snake(&mut self, ctx: &mut BTerm) {
         for Part { pos, direction } in &mut self.pos {
             ctx.print(pos.x, pos.y, format!(" "));
@@ -168,6 +176,9 @@ impl State {
         }
     }
 
+    /// Resets the game state
+    ///
+    /// This can be used to re/start the game
     pub fn reset(&mut self) {
         *self = Self::new();
     }
@@ -178,6 +189,5 @@ fn main() -> BError {
         .with_title("Rusty Snake")
         .build()?;
     let gs = State::new();
-    println!("{:?}", gs);
     main_loop(context, gs)
 }

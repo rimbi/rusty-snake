@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 bracket-terminal = "0.8.5"
+rand = "0.8.5"

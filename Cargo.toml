@@ -1,7 +1,16 @@
 [package]
-name = "snake-rs"
+name = "rusty-snake"
 version = "0.1.0"
 edition = "2021"
+authors = ["Cem Eliguzel <cemeliguzel@email.com>"]
+license = "MIT OR Apache-2.0"
+description = "Snake game"
+readme = "README.md"
+homepage = "https://github.com/rimbi/rusty-snake"
+repository = "https://github.com/rimbi/rusty-snake"
+keywords = ["game", "snake"]
+categories = ["games"]
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

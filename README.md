@@ -1,2 +1,2 @@
-# snake-rs
-A simple snake game implementation in Rust
+# Rusty Snake
+A simple snake game implementation in Rust.

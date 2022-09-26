@@ -53,7 +53,12 @@ impl GameState for State {
             ctx.print_centered(TERMINAL_HEIGHT / 2 - 1, "GAME OVER");
             ctx.print_centered(TERMINAL_HEIGHT / 2 + 1, "Press Space to restart");
             match ctx.key {
-                Some(VirtualKeyCode::Space) => self.reset(),
+                Some(VirtualKeyCode::Space) => {
+                    self.reset();
+                    // Clear the entire screen to clear the
+                    // game over text as well.
+                    ctx.cls();
+                }
                 Some(VirtualKeyCode::Q) => ctx.quit(),
                 _ => {}
             }

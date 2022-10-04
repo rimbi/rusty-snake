@@ -4,7 +4,7 @@
 
 A simple snake game implementation in Rust.
 
-![Rusty snake in motion](resources/20220919100150.png)
+![rusty-snake-gif](https://user-images.githubusercontent.com/100347457/193768033-2bde17cd-8eeb-4b39-8644-89d16e0efbf3.gif)
 
 ## Install
 
@@ -15,7 +15,7 @@ cargo install rusty-snake
 ## Build & Run
 
 ```bash
-cargo run
+rusty-snake
 ```
 
 ## How to play
